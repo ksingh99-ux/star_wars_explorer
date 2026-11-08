@@ -1,0 +1,22 @@
+<table class="table table-striped">
+  <thead>
+    <tr><th>Name</th><th>Gender</th><th>Birth Year</th><th>Homeworld</th><th>Species</th></tr>
+  </thead>
+  <tbody>
+    <% people.each do |person| %>
+      <tr>
+        <td><%= link_to person.name, person %></td>
+        <td><%= person.gender %></td>
+        <td><%= person.birth_year %></td>
+        <td><%= link_to person.planet.name, person.planet %></td>
+        <td>
+          <% if person.species %>
+            <%= link_to person.species.name, person.species %>
+          <% else %>
+            <span class="text-muted">Not listed</span>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

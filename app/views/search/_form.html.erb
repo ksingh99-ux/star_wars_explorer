@@ -1,0 +1,16 @@
+<%= form_with url: search_path, method: :get, class: "row g-2 align-items-end mb-4" do |form| %>
+  <div class="col-md-5">
+    <%= form.label :q, "Name", class: "form-label" %>
+    <%= form.text_field :q, value: params[:q], class: "form-control", placeholder: "e.g. Skywalker" %>
+  </div>
+  <div class="col-md-5">
+    <%= form.label :planet_id, "Homeworld", class: "form-label" %>
+    <%= form.select :planet_id,
+          options_from_collection_for_select(Planet.order(:name), :id, :name, params[:planet_id]),
+          { include_blank: "All planets" },
+          class: "form-select" %>
+  </div>
+  <div class="col-md-2">
+    <%= form.submit "Search", name: nil, class: "btn btn-primary w-100" %>
+  </div>
+<% end %>

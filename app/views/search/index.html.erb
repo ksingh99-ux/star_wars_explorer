@@ -1,0 +1,15 @@
+<% content_for :title, "Search | Star Wars Explorer" %>
+<h1 class="mb-3">Search People</h1>
+
+<%= render "search/form" %>
+
+<% if @query.present? || @planet_id.present? %>
+  <p class="lead"><%= pluralize(@people.total_count, "person") %> found</p>
+<% end %>
+
+<% if @people.any? %>
+  <%= render "people/table", people: @people %>
+  <%= paginate @people %>
+<% else %>
+  <div class="alert alert-info">No people match your search. Try a different name or planet.</div>
+<% end %>
