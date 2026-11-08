@@ -1,24 +1,24 @@
-# README
+# Star Wars Explorer
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A Ruby on Rails app that imports data from the Star Wars API (SWAPI) and lets you
+browse and search characters, planets, species, starships and vehicles.
 
-Things you may want to cover:
+## Setup
 
-* Ruby version
+    bundle install
+    bin/rails db:migrate
+    bin/rails db:seed
+    bin/rails server
 
-* System dependencies
+Then open http://localhost:3000
 
-* Configuration
+## Features
 
-* Database creation
+- Paginated lists of people, planets, species, starships and vehicles
+- Detail pages that link between related records
+- Search people by name and filter by homeworld
 
-* Database initialization
+## Data
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+See DATA_SOURCES.md for the dataset description.
+The database diagram (ERD) is in app/assets/images/erd.png.
