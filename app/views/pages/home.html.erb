@@ -3,14 +3,14 @@
 <h1 class="mb-3">Star Wars Explorer</h1>
 <p class="lead">Browse characters, planets, species, starships and vehicles from the Star Wars universe.</p>
 
-<% if @counts.values.sum > 0 %>
+<% if @sections.sum { |_, count, _| count } > 0 %>
   <div class="row">
-    <% @counts.each do |label, count| %>
+    <% @sections.each do |label, count, path| %>
       <div class="col-md-4 col-lg mb-3">
         <div class="card text-center h-100">
           <div class="card-body">
             <h2 class="card-title"><%= count %></h2>
-            <p class="card-text"><%= label %></p>
+            <p class="card-text"><%= link_to label, path, class: "stretched-link" %></p>
           </div>
         </div>
       </div>
