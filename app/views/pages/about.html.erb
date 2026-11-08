@@ -1,0 +1,35 @@
+<% content_for :title, "About | Star Wars Explorer" %>
+
+<h1 class="mb-4">About This Project</h1>
+
+<div class="row">
+  <div class="col-lg-6">
+    <h2>Data Source</h2>
+    <p>
+      All data comes from the <a href="https://swapi.dev">Star Wars API (SWAPI)</a>,
+      a free JSON API that needs no key. Five endpoints are used:
+      <strong>people</strong>, <strong>planets</strong>, <strong>species</strong>,
+      <strong>starships</strong> and <strong>vehicles</strong>.
+    </p>
+
+    <h2>How the Data Is Related</h2>
+    <ul>
+      <li>Each person has one homeworld; a planet has many people (one-to-many).</li>
+      <li>A person may belong to a species; a species has many people (one-to-many).</li>
+      <li>People pilot many starships, and starships have many pilots (many-to-many through <code>starship_pilots</code>).</li>
+      <li>People pilot many vehicles, and vehicles have many pilots (many-to-many through <code>vehicle_pilots</code>).</li>
+    </ul>
+
+    <h2>How It Was Imported</h2>
+    <p>
+      The seed script downloads every page of each endpoint. The API links records
+      with URLs, so the script uses those URLs to find the matching records and
+      creates the relationships with Active Record's own IDs.
+    </p>
+  </div>
+
+  <div class="col-lg-6">
+    <h2>Database Diagram (ERD)</h2>
+    <%= image_tag "erd.png", alt: "Entity relationship diagram of the Star Wars Explorer database", class: "img-fluid border rounded" %>
+  </div>
+</div>
