@@ -1,0 +1,51 @@
+<% content_for :title, "#{@person.name} | Star Wars Explorer" %>
+<h1 class="mb-4"><%= @person.name %></h1>
+
+<div class="row">
+  <div class="col-md-6">
+    <h2>Details</h2>
+    <dl class="row">
+      <dt class="col-sm-4">Height</dt><dd class="col-sm-8"><%= @person.height %> cm</dd>
+      <dt class="col-sm-4">Mass</dt><dd class="col-sm-8"><%= @person.mass %> kg</dd>
+      <dt class="col-sm-4">Hair Colour</dt><dd class="col-sm-8"><%= @person.hair_color %></dd>
+      <dt class="col-sm-4">Eye Colour</dt><dd class="col-sm-8"><%= @person.eye_color %></dd>
+      <dt class="col-sm-4">Birth Year</dt><dd class="col-sm-8"><%= @person.birth_year %></dd>
+      <dt class="col-sm-4">Gender</dt><dd class="col-sm-8"><%= @person.gender %></dd>
+      <dt class="col-sm-4">Homeworld</dt><dd class="col-sm-8"><%= link_to @person.planet.name, @person.planet %></dd>
+      <dt class="col-sm-4">Species</dt>
+      <dd class="col-sm-8">
+        <% if @person.species %>
+          <%= link_to @person.species.name, @person.species %>
+        <% else %>
+          <span class="text-muted">Not listed</span>
+        <% end %>
+      </dd>
+    </dl>
+  </div>
+
+  <div class="col-md-6">
+    <h2>Starships Piloted</h2>
+    <% if @person.starships.any? %>
+      <ul class="list-group mb-4">
+        <% @person.starships.order(:name).each do |starship| %>
+          <li class="list-group-item"><%= link_to starship.name, starship %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p class="text-muted">None.</p>
+    <% end %>
+
+    <h2>Vehicles Piloted</h2>
+    <% if @person.vehicles.any? %>
+      <ul class="list-group">
+        <% @person.vehicles.order(:name).each do |vehicle| %>
+          <li class="list-group-item"><%= link_to vehicle.name, vehicle %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p class="text-muted">None.</p>
+    <% end %>
+  </div>
+</div>
+
+<%= link_to "← All people", people_path, class: "btn btn-secondary mt-4" %>

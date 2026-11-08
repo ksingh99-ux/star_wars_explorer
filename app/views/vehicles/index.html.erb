@@ -1,0 +1,21 @@
+<% content_for :title, "Vehicles | Star Wars Explorer" %>
+<h1 class="mb-3">Vehicles</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr><th>Name</th><th>Model</th><th>Class</th><th>Manufacturer</th><th>Pilots</th></tr>
+  </thead>
+  <tbody>
+    <% @vehicles.each do |vehicle| %>
+      <tr>
+        <td><%= link_to vehicle.name, vehicle %></td>
+        <td><%= vehicle.model %></td>
+        <td><%= vehicle.vehicle_class %></td>
+        <td><%= vehicle.manufacturer %></td>
+        <td><%= vehicle.people.size %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @vehicles %>

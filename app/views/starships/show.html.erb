@@ -1,0 +1,29 @@
+<% content_for :title, "#{@starship.name} | Star Wars Explorer" %>
+<h1 class="mb-4"><%= @starship.name %></h1>
+
+<div class="row">
+  <div class="col-md-6">
+    <h2>Details</h2>
+    <dl class="row">
+      <dt class="col-sm-4">Model</dt><dd class="col-sm-8"><%= @starship.model %></dd>
+      <dt class="col-sm-4">Class</dt><dd class="col-sm-8"><%= @starship.starship_class %></dd>
+      <dt class="col-sm-4">Manufacturer</dt><dd class="col-sm-8"><%= @starship.manufacturer %></dd>
+      <dt class="col-sm-4">Cost</dt><dd class="col-sm-8"><%= @starship.cost_in_credits %> credits</dd>
+    </dl>
+  </div>
+
+  <div class="col-md-6">
+    <h2>Pilots</h2>
+    <% if @starship.people.any? %>
+      <ul class="list-group">
+        <% @starship.people.order(:name).each do |person| %>
+          <li class="list-group-item"><%= link_to person.name, person %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p class="text-muted">No known pilots.</p>
+    <% end %>
+  </div>
+</div>
+
+<%= link_to "← All starships", starships_path, class: "btn btn-secondary mt-4" %>

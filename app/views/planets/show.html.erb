@@ -1,0 +1,29 @@
+<% content_for :title, "#{@planet.name} | Star Wars Explorer" %>
+<h1 class="mb-4"><%= @planet.name %></h1>
+
+<div class="row">
+  <div class="col-md-6">
+    <h2>Details</h2>
+    <dl class="row">
+      <dt class="col-sm-4">Climate</dt><dd class="col-sm-8"><%= @planet.climate %></dd>
+      <dt class="col-sm-4">Terrain</dt><dd class="col-sm-8"><%= @planet.terrain %></dd>
+      <dt class="col-sm-4">Population</dt><dd class="col-sm-8"><%= @planet.population %></dd>
+      <dt class="col-sm-4">Diameter</dt><dd class="col-sm-8"><%= @planet.diameter %> km</dd>
+    </dl>
+  </div>
+
+  <div class="col-md-6">
+    <h2>Residents</h2>
+    <% if @planet.people.any? %>
+      <ul class="list-group">
+        <% @planet.people.order(:name).each do |person| %>
+          <li class="list-group-item"><%= link_to person.name, person %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p class="text-muted">No known residents.</p>
+    <% end %>
+  </div>
+</div>
+
+<%= link_to "← All planets", planets_path, class: "btn btn-secondary mt-4" %>
