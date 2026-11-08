@@ -1,13 +1,20 @@
 <%= form_with url: search_path, method: :get, class: "row g-2 align-items-end mb-4" do |form| %>
-  <div class="col-md-5">
+  <div class="col-md-4">
     <%= form.label :q, "Name", class: "form-label" %>
     <%= form.text_field :q, value: params[:q], class: "form-control", placeholder: "e.g. Skywalker" %>
   </div>
-  <div class="col-md-5">
+  <div class="col-md-3">
     <%= form.label :planet_id, "Homeworld", class: "form-label" %>
     <%= form.select :planet_id,
           options_from_collection_for_select(Planet.order(:name), :id, :name, params[:planet_id]),
           { include_blank: "All planets" },
+          class: "form-select" %>
+  </div>
+  <div class="col-md-3">
+    <%= form.label :species_id, "Species", class: "form-label" %>
+    <%= form.select :species_id,
+          options_from_collection_for_select(Species.order(:name), :id, :name, params[:species_id]),
+          { include_blank: "All species" },
           class: "form-select" %>
   </div>
   <div class="col-md-2">

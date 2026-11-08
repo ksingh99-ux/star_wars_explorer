@@ -3,7 +3,7 @@
 
 <%= render "search/form" %>
 
-<% if @query.present? || @planet_id.present? %>
+<% if @query.present? || @planet_id.present? || @species_id.present? %>
   <p class="lead"><%= pluralize(@people.total_count, "person") %> found</p>
 <% end %>
 
