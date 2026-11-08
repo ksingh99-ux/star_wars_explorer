@@ -11,25 +11,38 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="d-flex flex-column min-vh-100">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
       <div class="container">
         <%= link_to "Star Wars Explorer", root_path, class: "navbar-brand" %>
-        <div class="navbar-nav">
-                    <%= link_to "Home", root_path, class: "nav-link" %>
-          <%= link_to "People", people_path, class: "nav-link" %>
-          <%= link_to "Planets", planets_path, class: "nav-link" %>
-          <%= link_to "Species", species_index_path, class: "nav-link" %>
-          <%= link_to "Starships", starships_path, class: "nav-link" %>
-          <%= link_to "Vehicles", vehicles_path, class: "nav-link" %>
-          <%= link_to "About", about_path, class: "nav-link" %>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <div class="navbar-nav">
+            <%= nav_link "Home", root_path %>
+            <%= nav_link "People", people_path %>
+            <%= nav_link "Planets", planets_path %>
+            <%= nav_link "Species", species_index_path %>
+            <%= nav_link "Starships", starships_path %>
+            <%= nav_link "Vehicles", vehicles_path %>
+            <%= nav_link "Search", search_path %>
+            <%= nav_link "About", about_path %>
+          </div>
         </div>
       </div>
     </nav>
 
-    <main class="container">
+    <main class="container flex-grow-1">
       <%= yield %>
     </main>
+
+    <footer class="bg-dark text-light py-3 mt-5">
+      <div class="container small">
+        Data from <a class="link-light" href="https://swapi.dev">SWAPI, the Star Wars API</a> · Built with Ruby on Rails
+      </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
