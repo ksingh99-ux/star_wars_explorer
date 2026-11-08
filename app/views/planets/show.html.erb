@@ -8,7 +8,7 @@
       <dt class="col-sm-4">Climate</dt><dd class="col-sm-8"><%= @planet.climate %></dd>
       <dt class="col-sm-4">Terrain</dt><dd class="col-sm-8"><%= @planet.terrain %></dd>
       <dt class="col-sm-4">Population</dt><dd class="col-sm-8"><%= @planet.population %></dd>
-      <dt class="col-sm-4">Diameter</dt><dd class="col-sm-8"><%= @planet.diameter %> km</dd>
+      <dt class="col-sm-4">Diameter</dt><dd class="col-sm-8"><%= with_unit(@planet.diameter, "km") %></dd>
     </dl>
   </div>
 

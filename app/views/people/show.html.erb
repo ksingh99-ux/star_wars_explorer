@@ -5,8 +5,8 @@
   <div class="col-md-6">
     <h2>Details</h2>
     <dl class="row">
-      <dt class="col-sm-4">Height</dt><dd class="col-sm-8"><%= @person.height %> cm</dd>
-      <dt class="col-sm-4">Mass</dt><dd class="col-sm-8"><%= @person.mass %> kg</dd>
+      <dt class="col-sm-4">Height</dt><dd class="col-sm-8"><%= with_unit(@person.height, "cm") %></dd>
+      <dt class="col-sm-4">Mass</dt><dd class="col-sm-8"><%= with_unit(@person.mass, "kg") %></dd>
       <dt class="col-sm-4">Hair Colour</dt><dd class="col-sm-8"><%= @person.hair_color %></dd>
       <dt class="col-sm-4">Eye Colour</dt><dd class="col-sm-8"><%= @person.eye_color %></dd>
       <dt class="col-sm-4">Birth Year</dt><dd class="col-sm-8"><%= @person.birth_year %></dd>

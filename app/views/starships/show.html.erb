@@ -8,7 +8,7 @@
       <dt class="col-sm-4">Model</dt><dd class="col-sm-8"><%= @starship.model %></dd>
       <dt class="col-sm-4">Class</dt><dd class="col-sm-8"><%= @starship.starship_class %></dd>
       <dt class="col-sm-4">Manufacturer</dt><dd class="col-sm-8"><%= @starship.manufacturer %></dd>
-      <dt class="col-sm-4">Cost</dt><dd class="col-sm-8"><%= @starship.cost_in_credits %> credits</dd>
+      <dt class="col-sm-4">Cost</dt><dd class="col-sm-8"><%= with_unit(@starship.cost_in_credits, "credits") %></dd>
     </dl>
   </div>
 
