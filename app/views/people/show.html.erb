@@ -17,6 +17,7 @@
         <% if @person.species %>
           <%= link_to @person.species.name, @person.species %>
         <% else %>
+                <%# ERB conditional: some people (e.g. Luke) have no species, so show "Not listed" instead of crashing %>
           <span class="text-muted">Not listed</span>
         <% end %>
       </dd>
